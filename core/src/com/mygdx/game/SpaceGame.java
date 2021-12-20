@@ -112,7 +112,7 @@ public class SpaceGame extends ApplicationAdapter {
 		if(TimeUtils.nanoTime() - lastEnemyShipSpawned > 1000000000) spawnMeteor();
 
 
-		if(TimeUtils.nanoTime() - lastMeteorSpawned > 1000000000) spawnEnemy();
+		if(TimeUtils.nanoTime() - lastMeteorSpawned > 1000000000) spawnEnemyhip();
 
 
 		for(EnemyShip enemyShip : enemyShips){
