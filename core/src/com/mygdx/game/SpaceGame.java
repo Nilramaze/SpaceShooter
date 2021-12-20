@@ -34,7 +34,10 @@ public class SpaceGame extends ApplicationAdapter {
 
 	private Array<Meteor> meteors;
 
-	private long lastEnemySpawned;
+	private long lastEnemyShipSpawned;
+
+
+	private long lastMeteorSpawned;
 
 	private UserShip userShip;
 
@@ -64,7 +67,7 @@ public class SpaceGame extends ApplicationAdapter {
 
 		lvlComplete = false;
 
-
+			render();
 	}
 
 	@Override
@@ -106,10 +109,10 @@ public class SpaceGame extends ApplicationAdapter {
 		}
 
 
-		if(TimeUtils.nanoTime() - lastEnemySpawned > 1000000000) spawnMeteor();
+		if(TimeUtils.nanoTime() - lastEnemyShipSpawned > 1000000000) spawnMeteor();
 
 
-		if(TimeUtils.nanoTime() - lastEnemySpawned > 1000000000) spawnEnemy();
+		if(TimeUtils.nanoTime() - lastMeteorSpawned > 1000000000) spawnEnemy();
 
 
 		for(EnemyShip enemyShip : enemyShips){
@@ -184,28 +187,25 @@ public class SpaceGame extends ApplicationAdapter {
 	}
 
 
-
-	private void spawnEnemy() {
-
+	private void spawnEnemyShip() {
 
 		float x = MathUtils.random(0, 800-64);
-		float y = 480;
+		float y = 480-64;
 		EnemyShip enemyShip = new EnemyShip(x,y);
 
 		enemyShips.add(enemyShip);
-		lastEnemySpawned = TimeUtils.nanoTime();
-
-
+		lastEnemyShipSpawned = TimeUtils.nanoTime();
 	}
+
 
 	private void spawnMeteor() {
 
 		float x = MathUtils.random(0, 800-64);
-		float y = 480;
+		float y = 480-64;
 		Meteor meteor = new Meteor(x,y);
 
 		meteors.add(meteor);
-		lastEnemySpawned = TimeUtils.nanoTime();
+		lastMeteorSpawned = TimeUtils.nanoTime();
 	}
 
 	
