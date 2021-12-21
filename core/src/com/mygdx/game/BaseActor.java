@@ -14,6 +14,10 @@ public class BaseActor extends Actor {
 
    private Rectangle actorRectangle;
 
+   private float x;
+   private float y;
+   private Stage mainStage;
+
     private float acceleration;
     private float speed;
     private float maxSpeed;
@@ -26,8 +30,8 @@ public class BaseActor extends Actor {
         super();
     }
 
-
-
+    public BaseActor(float x, float y, Stage mainStage) {
+    }
 
 
     public void loadTexture()
@@ -81,6 +85,13 @@ public class BaseActor extends Actor {
     {
         actorRectangle.x += x;
         actorRectangle.y += y;
+
+    }
+
+    public void centerAtPosition(float x, float y) {
+
+        this.x = x;
+        this.y = y;
 
     }
 }

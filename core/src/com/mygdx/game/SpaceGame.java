@@ -1,6 +1,7 @@
 package com.mygdx.game;
 
 import com.badlogic.gdx.ApplicationAdapter;
+import com.badlogic.gdx.Game;
 import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.Input;
 import com.badlogic.gdx.audio.Music;
@@ -13,7 +14,7 @@ import com.badlogic.gdx.utils.Array;
 import com.badlogic.gdx.utils.ScreenUtils;
 import com.badlogic.gdx.utils.TimeUtils;
 
-public class SpaceGame extends ApplicationAdapter {
+public class SpaceGame extends Game {
 
 	private SpriteBatch batch;
 	private Texture shipImg;
@@ -41,12 +42,16 @@ public class SpaceGame extends ApplicationAdapter {
 
 	private UserShip userShip;
 
-
+	public static void setActiveScreen(LevelScreen levelScreen) {
+	}
 
 
 	@Override
 	public void create () {
 		batch = new SpriteBatch();
+
+		setActiveScreen(new MenuScreen());
+
 
 		userShip = new UserShip();
 
@@ -112,7 +117,7 @@ public class SpaceGame extends ApplicationAdapter {
 		if(TimeUtils.nanoTime() - lastEnemyShipSpawned > 1000000000) spawnMeteor();
 
 
-		if(TimeUtils.nanoTime() - lastMeteorSpawned > 1000000000) spawnEnemyhip();
+		if(TimeUtils.nanoTime() - lastMeteorSpawned > 1000000000) spawnEnemyShip();
 
 
 		for(EnemyShip enemyShip : enemyShips){
